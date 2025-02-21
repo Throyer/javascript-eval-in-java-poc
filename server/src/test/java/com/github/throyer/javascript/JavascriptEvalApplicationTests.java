@@ -1,4 +1,4 @@
-package com.github.throyer.javascript_eval;
+package com.github.throyer.javascript;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

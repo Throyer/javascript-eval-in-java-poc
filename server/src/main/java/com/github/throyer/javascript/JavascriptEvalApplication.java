@@ -1,4 +1,4 @@
-package com.github.throyer.javascript_eval;
+package com.github.throyer.javascript;
 
 import static org.springframework.boot.SpringApplication.run;
 
