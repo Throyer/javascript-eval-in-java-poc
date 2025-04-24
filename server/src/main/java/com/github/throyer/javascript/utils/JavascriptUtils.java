@@ -46,7 +46,7 @@ public class JavascriptUtils {
      * @typedef {%s} PaymentMethod
      * @typedef {%s} Origin
      *
-     * @typedef {Object} Parameters
+     * @typedef {Object} OrderParameters
      * @property {Status} status status atual do pedido.
      * @property {DeliveryType} deliveryType tipo de entrega.
      * @property {Array<PaymentMethod>} paymentMethods métodos de pagamento.
@@ -59,7 +59,7 @@ public class JavascriptUtils {
      * @property {boolean} etaIsEarly se o prazo de entrega da transportadora está com adiantado em relação ao do compromisso.
      * @property {boolean} etaIsLate se o prazo de entrega da transportadora está com atraso.
      *
-     * @param {Parameters} parameters
+     * @param {OrderParameters} parameters
      * @returns {boolean} define se comunicação é elegível ou não.
      */
     function eligible(parameters) {

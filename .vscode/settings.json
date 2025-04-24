@@ -1,14 +1,15 @@
 {
-    "cSpell.words": [
-        "devcontainers",
-        "geistmann",
-        "github",
-        "lazydocker",
-        "redhat",
-        "springframework",
-        "throyer",
-        "vscjava"
-    ],
-    "java.compile.nullAnalysis.mode": "disabled",
-    "java.configuration.updateBuildConfiguration": "automatic"
+  "cSpell.words": [
+    "devcontainers",
+    "geistmann",
+    "github",
+    "lazydocker",
+    "redhat",
+    "springframework",
+    "throyer",
+    "vscjava",
+    "termolabil"
+  ],
+  "java.compile.nullAnalysis.mode": "disabled",
+  "java.configuration.updateBuildConfiguration": "automatic"
 }

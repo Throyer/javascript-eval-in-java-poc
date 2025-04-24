@@ -31,7 +31,7 @@ public class JavascriptEngineService {
              * @typedef {"CARD" | "PIX" | "NU_PAY" | "APPLE_PAY" | "GOOGLE_PAY"} PaymentMethod
              * @typedef {"1P" | "3P" | "HYBRID"} Origin
              *
-             * @typedef {Object} AfterSaleParameters
+             * @typedef {Object} OrderParameters
              * @property {Status} status status atual do pedido.
              * @property {DeliveryType} deliveryType tipo de entrega.
              * @property {Array<PaymentMethod>} paymentMethods métodos de pagamento.
@@ -44,7 +44,7 @@ public class JavascriptEngineService {
              * @property {boolean} etaIsEarly se o prazo de entrega da transportadora está com adiantado em relação ao do compromisso.
              * @property {boolean} etaIsLate se o prazo de entrega da transportadora está com atraso.
              *
-             * @param {AfterSaleParameters} parameters
+             * @param {OrderParameters} parameters
              * @returns {boolean} define comunicação é elegível ou não.
              */
             function eligible(parameters) {
