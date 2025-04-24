@@ -1,55 +1,39 @@
 package com.github.throyer.javascript.controllers;
 
-import java.util.Map;
-
-import javax.script.Invocable;
-import javax.script.ScriptEngineManager;
-import javax.script.ScriptException;
-
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.github.throyer.javascript.models.Parameters;
+import com.github.throyer.javascript.services.JavascriptEngineService;
+import com.github.throyer.javascript.utils.JavascriptUtils;
+
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import lombok.AllArgsConstructor;
+
 @RestController
 @RequestMapping("/poc")
+@AllArgsConstructor
 public class PocController {
-  @GetMapping
-  public Object index() throws ScriptException, NoSuchMethodException {
-      
-    var manager = new ScriptEngineManager();
-    var engine = manager.getEngineByName("js");
+  private final JavascriptEngineService service;
 
-    // language=javascript
-    var parameters = engine.eval("""
-    ({
-      "deliveryType": "D+1",
-      "paymentTypes": ["PIX"],
-      "origin": "1P"
-    })    
-    """);
+  @PostMapping
+  public Object poc(@RequestBody Parameters parameters) {      
+    return service.eligible(parameters);
+  }
 
-    // language=javascript
-    var script = 
-    """
-    function eligible(parameters) {
-      if (parameters.deliveryType === 'EXPRESS') {
-        return false;
-      }
-
-      if (parameters.paymentTypes.includes('PIX')) {
-        return false;
-      }
-
-      return true;
-    }
-    """;
-
-    engine.eval(script);
-
-    var invocable = (Invocable) engine;
-
-    var result = Boolean.class.cast(invocable.invokeFunction("eligible", parameters));
-
-    return Map.of("eligible", result);
+  @ApiResponse(
+    responseCode = "200",
+    description = "exemplo de função eligible.",
+    content = {@Content(schema = @Schema(example = JavascriptUtils.FUNCTION_EXAMPLE))}
+  )
+  @GetMapping(produces = MediaType.TEXT_HTML_VALUE)
+  public String index() {
+    return JavascriptUtils.func();
   }
 }
